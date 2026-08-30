@@ -1,0 +1,3 @@
+module.exports=[28404,a=>{"use strict";var b=a.i(7997),c=a.i(95936);a.s(["default",0,function(){return(0,b.jsxs)("div",{className:"container mx-auto px-4 py-20 text-center",children:[(0,b.jsx)("h1",{className:"text-4xl font-bold text-gray-900 mb-4",children:"Product Not Found"}),(0,b.jsx)("p",{className:"text-lg text-gray-600 mb-8",children:"The product you're looking for doesn't exist or has been removed."}),(0,b.jsx)(c.default,{href:"/products",className:"inline-block bg-amber-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-amber-700",children:"Back to Products"})]})}])},59229,function(a){a.n(a.i(28404))}];
+
+//# sourceMappingURL=app_products_%5Bid%5D_not-found_tsx_140ylly._.js.map

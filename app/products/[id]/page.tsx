@@ -38,9 +38,9 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
       <main className="container mx-auto px-4 py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div className="flex items-center justify-center bg-gray-100 rounded-lg h-96">
-            {product.imageUrl ? (
+            {product.image_url ? (
               <Image
-                src={product.imageUrl}
+                src={product.image_url}
                 alt={product.name}
                 width={400}
                 height={500}
@@ -59,7 +59,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
             </h1>
 
             <div className="text-3xl text-amber-600 font-semibold mb-6">
-              ${(product.priceInCents / 100).toFixed(2)}
+              ${(product.price / 100).toFixed(2)}
             </div>
 
             <p className="text-lg text-gray-600 mb-8 leading-relaxed">

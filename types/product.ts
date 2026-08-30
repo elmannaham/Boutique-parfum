@@ -25,49 +25,49 @@ export enum ProductStatus {
   DISCONTINUED = 'discontinued',
 }
 
-// Core Product interface (matches Prisma schema camelCase)
+// Core Product interface (mapped to snake_case by productService)
 export interface Product {
   id: string;
   name: string;
   slug: string;
   description?: string | null;
-  longDescription?: string | null;
+  long_description?: string | null;
 
   // Pricing (prices in cents, e.g., 15999 = €159.99)
-  priceInCents: number; // Current price in cents
-  originalPriceInCents?: number | null; // Original price (for sales)
+  price: number; // Current price in cents
+  original_price?: number | null; // Original price (for sales)
 
   // Product details
-  fragranceFamily: string;
+  fragrance_family: string;
   volume?: number | null; // Volume in ml (e.g., 50, 100)
   concentration?: string | null; // eau_de_cologne, eau_de_toilette, eau_de_parfum, pure_parfum
-  topNotes?: string | null;
-  middleNotes?: string | null;
-  baseNotes?: string | null;
+  top_notes?: string | null;
+  middle_notes?: string | null;
+  base_notes?: string | null;
 
   // Images
-  imageUrl: string;
-  thumbnailUrl?: string | null;
+  image_url: string;
+  thumbnail_url?: string | null;
 
   // Status & availability
   status?: string;
   stock: number; // Quantity in stock
-  isLimitedEdition: boolean;
-  limitedEditionCount?: number | null; // Total units produced
+  is_limited_edition: boolean;
+  limited_edition_count?: number | null; // Total units produced
 
   // Ratings & reviews
-  averageRating?: number | null; // 0-5
-  totalReviews?: number;
+  average_rating?: number | null; // 0-5
+  total_reviews?: number;
 
   // Metadata
-  createdAt: Date;
-  updatedAt: Date;
-  publishedAt?: Date | null;
+  created_at: Date;
+  updated_at: Date;
+  published_at?: Date | null;
 
   // SEO
-  seoTitle?: string | null;
-  seoDescription?: string | null;
-  seoKeywords?: string | null;
+  seo_title?: string | null;
+  seo_description?: string | null;
+  seo_keywords?: string | null;
 }
 
 // Product with full details (used on detail page)
@@ -101,7 +101,7 @@ export interface ProductCard
 
 // Product filtering options
 export interface ProductFilters {
-  fragrance_families?: FragranceFamily[] | string[];
+  fragrance_families?: string[];
   min_price?: number; // In cents
   max_price?: number; // In cents
   in_stock_only?: boolean;
@@ -124,15 +124,15 @@ export interface ProductSearchResult {
 // Review type
 export interface Review {
   id: string;
-  product_id: string;
-  user_id: string;
-  user_name: string;
+  productId: string;
+  userId: string;
+  userName: string;
   rating: number; // 1-5
   title: string;
   content: string;
-  verified_purchase: boolean;
-  helpful_count?: number;
-  created_at: Date;
+  verifiedPurchase: boolean;
+  helpfulCount?: number;
+  createdAt: Date;
 }
 
 // Product mutation types (for API operations)

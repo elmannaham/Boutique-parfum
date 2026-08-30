@@ -1,0 +1,118 @@
+{
+  "compilerOptions": {
+    // ========================================================================
+    // LANGUAGE & ENVIRONMENT
+    // ========================================================================
+    "target": "ES2020",
+    "lib": [
+      "ES2020",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "jsx": "react-jsx", // Let Next.js handle JSX transformation
+    "useDefineForClassFields": true,
+    // ========================================================================
+    // STRICT TYPE CHECKING (non-negotiable for production)
+    // ========================================================================
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "useUnknownInCatchVariables": true,
+    // ========================================================================
+    // ADDITIONAL SAFETY CHECKS
+    // ========================================================================
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    // ========================================================================
+    // MODULE RESOLUTION
+    // ========================================================================
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    // ========================================================================
+    // PATH MAPPING (absolute imports)
+    // ========================================================================
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./*"
+      ],
+      "@/components/*": [
+        "./components/*"
+      ],
+      "@/lib/*": [
+        "./lib/*"
+      ],
+      "@/types/*": [
+        "./types/*"
+      ],
+      "@/app/*": [
+        "./app/*"
+      ],
+      "@/styles/*": [
+        "./styles/*"
+      ],
+      "@/public/*": [
+        "./public/*"
+      ]
+    },
+    // ========================================================================
+    // OUTPUT
+    // ========================================================================
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "outDir": ".next",
+    "removeComments": true,
+    // ========================================================================
+    // INCREMENTAL & PERFORMANCE
+    // ========================================================================
+    "incremental": true,
+    "tsBuildInfoFile": ".next/.tsbuildinfo",
+    // ========================================================================
+    // INTEROP & COMPATIBILITY
+    // ========================================================================
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "allowJs": true,
+    "noEmit": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  // ============================================================================
+  // INCLUDE / EXCLUDE
+  // ============================================================================
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    "**/*.jsx",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    ".next",
+    "dist",
+    "build",
+    "coverage",
+    "**/*.test.ts",
+    "**/*.test.tsx"
+  ]
+}

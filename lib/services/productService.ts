@@ -5,6 +5,15 @@ import type { Product } from '@/types'
  * Mapper function to convert Prisma Product model (camelCase) to application Product type (snake_case)
  */
 function mapPrismaProductToProduct(prismaProduct: any): Product {
+  const safeJsonParse = (str: string | undefined) => {
+    if (!str) return undefined
+    try {
+      return JSON.parse(str)
+    } catch {
+      return undefined
+    }
+  }
+
   return {
     id: prismaProduct.id,
     name: prismaProduct.name,
@@ -16,9 +25,9 @@ function mapPrismaProductToProduct(prismaProduct: any): Product {
     fragrance_family: prismaProduct.fragranceFamily,
     volume: prismaProduct.volume,
     concentration: prismaProduct.concentration,
-    top_notes: prismaProduct.topNotes ? JSON.parse(prismaProduct.topNotes) : undefined,
-    middle_notes: prismaProduct.middleNotes ? JSON.parse(prismaProduct.middleNotes) : undefined,
-    base_notes: prismaProduct.baseNotes ? JSON.parse(prismaProduct.baseNotes) : undefined,
+    top_notes: safeJsonParse(prismaProduct.topNotes),
+    middle_notes: safeJsonParse(prismaProduct.middleNotes),
+    base_notes: safeJsonParse(prismaProduct.baseNotes),
     image_url: prismaProduct.imageUrl,
     thumbnail_url: prismaProduct.thumbnailUrl,
     status: prismaProduct.status,
@@ -32,7 +41,7 @@ function mapPrismaProductToProduct(prismaProduct: any): Product {
     published_at: prismaProduct.publishedAt,
     seo_title: prismaProduct.seoTitle,
     seo_description: prismaProduct.seoDescription,
-    seo_keywords: prismaProduct.seoKeywords ? JSON.parse(prismaProduct.seoKeywords) : undefined,
+    seo_keywords: safeJsonParse(prismaProduct.seoKeywords),
   }
 }
 

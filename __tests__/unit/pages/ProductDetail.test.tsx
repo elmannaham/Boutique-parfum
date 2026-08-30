@@ -8,11 +8,11 @@ vi.mock('@/lib/services/productService', () => ({
       ? Promise.resolve({
           id: '1',
           name: 'Essence Nocturne',
-          price: 89.99,
+          priceInCents: 8999,
           description: 'Dark and mysterious',
           concentration: 'Eau de Parfum',
           volume: 100,
-          image: '/images/essence-nocturne.jpg',
+          imageUrl: '/images/essence-nocturne.jpg',
         })
       : Promise.resolve(null)
   ),

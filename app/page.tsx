@@ -4,7 +4,13 @@ import { ProductGrid } from '@/components/products/ProductGrid'
 import { getFeaturedProducts } from '@/lib/services/productService'
 
 export default async function HomePage() {
-  const featuredProducts = await getFeaturedProducts(6)
+  let featuredProducts = []
+  try {
+    featuredProducts = await getFeaturedProducts(6)
+  } catch (error) {
+    // Database not yet initialized or unavailable
+    console.log('Featured products unavailable at build time')
+  }
 
   return (
     <>

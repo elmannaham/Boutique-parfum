@@ -1,6 +1,7 @@
 import { HeaderPremium } from '@/components/common/HeaderPremium'
 import { ProductGrid } from '@/components/products/ProductGrid'
 import { getProducts } from '@/lib/services/productService'
+import type { Product } from '@/types'
 
 export const metadata = {
   title: 'All Products | Maison Maeta',
@@ -8,7 +9,13 @@ export const metadata = {
 }
 
 export default async function ProductListingPage() {
-  const allProducts = await getProducts()
+  let allProducts: Product[] = []
+  try {
+    allProducts = await getProducts()
+  } catch (error) {
+    // Database not yet initialized or unavailable
+    console.log('Products unavailable at build time')
+  }
 
   return (
     <>

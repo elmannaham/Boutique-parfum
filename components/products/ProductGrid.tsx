@@ -6,7 +6,7 @@ interface ProductGridProps {
   variant?: 'featured' | 'all'
 }
 
-export function ProductGrid({ products, variant = 'all' }: ProductGridProps) {
+export function ProductGrid({ products }: ProductGridProps) {
   if (products.length === 0) {
     return (
       <div className="py-12 text-center">

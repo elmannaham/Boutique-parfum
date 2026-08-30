@@ -2,9 +2,10 @@ import { HeroPremium } from '@/components/home/HeroPremium'
 import { HeaderPremium } from '@/components/common/HeaderPremium'
 import { ProductGrid } from '@/components/products/ProductGrid'
 import { getFeaturedProducts } from '@/lib/services/productService'
+import type { Product } from '@/types'
 
 export default async function HomePage() {
-  let featuredProducts = []
+  let featuredProducts: Product[] = []
   try {
     featuredProducts = await getFeaturedProducts(6)
   } catch (error) {

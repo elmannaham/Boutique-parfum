@@ -1,36 +1,16 @@
 import { HeaderPremium } from "@/components/common/HeaderPremium";
 import { HeroPremium } from "@/components/home/HeroPremium";
-import { ProductGrid } from "@/components/products/ProductGrid";
+import { FeaturedFragrances } from "@/components/sections/FeaturedFragrances";
 import BentoDemo from "@/components/ui/bento-demo";
-import { getFeaturedProducts } from "@/lib/services/productService";
-import type { Product } from "@/types";
 
-export default async function HomePage() {
-  let featuredProducts: Product[] = [];
-  try {
-    featuredProducts = await getFeaturedProducts(6);
-  } catch (error) {
-    // Database not yet initialized or unavailable
-    console.log("Featured products unavailable at build time");
-  }
-
+export default function HomePage() {
   return (
     <>
       <HeaderPremium />
       <HeroPremium />
 
-      <section className="container mx-auto px-4 py-20">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Featured Fragrances
-          </h2>
-          <p className="text-lg text-gray-600">
-            Discover our curated selection of luxury perfumes
-          </p>
-        </div>
-
-        <ProductGrid products={featuredProducts} variant="featured" />
-      </section>
+      {/* Featured Fragrances Section */}
+      <FeaturedFragrances />
 
       {/* Bento Grid - Product Features */}
       <BentoDemo />

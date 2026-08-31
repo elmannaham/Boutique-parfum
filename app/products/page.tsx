@@ -1,11 +1,12 @@
 import { HeaderPremium } from "@/components/common/HeaderPremium";
+import { PageHero } from "@/components/sections/PageHero";
 import { PerfumeGrid } from "@/components/products/PerfumeGrid";
 import { PERFUME_PRODUCTS } from "@/lib/data/perfume-products";
 
 export const metadata = {
   title: "All Fragrances | Maison Maeta",
   description:
-    "Discover our complete collection of 20 luxury perfumes, each crafted with the finest essences from around the world",
+    "Discover our complete collection of luxury perfumes, each crafted with the finest essences from around the world",
 };
 
 export default function ProductsPage() {
@@ -14,17 +15,13 @@ export default function ProductsPage() {
       <HeaderPremium />
 
       {/* Hero Section */}
-      <section className="relative py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-amber-50 to-white">
-        <div className="max-w-7xl mx-auto text-center">
-          <h1 className="font-serif text-5xl sm:text-6xl font-bold text-gray-950 mb-6">
-            Our Collection
-          </h1>
-          <p className="text-xl text-gray-700 max-w-2xl mx-auto">
-            Explore 20 exquisite fragrances, each crafted with the finest
-            essences from around the world. Discover your signature scent today.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        badge="Luxury Perfumes"
+        title="Our Collection"
+        subtitle="Exquisite Fragrances from Around the World"
+        description="Explore our curated selection of premium perfumes, each crafted with the finest essences. Find your signature scent among our luxury collection."
+        variant="full"
+      />
 
       {/* Filters Section */}
       <section className="px-4 sm:px-6 lg:px-8 py-8 bg-white border-b border-gray-200">

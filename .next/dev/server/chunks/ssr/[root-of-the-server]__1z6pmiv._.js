@@ -314,7 +314,7 @@ __turbopack_context__.n(__TURBOPACK__imported__module__$5b$project$5d2f$componen
 "use strict";
 
 /**
- * Catalogue de 20 parfums de luxe - Maison Maeta
+ * Catalogue de 13 parfums de luxe - Maison Maeta
  * Chaque produit inclut:
  * - Identifiant unique
  * - Nom et description
@@ -358,7 +358,7 @@ const PERFUME_PRODUCTS = [
         },
         volume: 100,
         price: 245,
-        image: "/images/perfumes/midnight-rose.svg",
+        image: "/images/perfumes/midnight-rose.jpg",
         availability: "In Stock",
         rating: 4.9,
         reviews: 287,
@@ -461,51 +461,6 @@ const PERFUME_PRODUCTS = [
         isLimited: false
     },
     {
-        id: "velvet-orchid",
-        name: "Velvet Orchid",
-        frenchName: "Orchidée Velouté",
-        description: "Sensual orchid with black licorice and dark chocolate undertones.",
-        profile: {
-            top: [
-                "Cardamom",
-                "Bergamot",
-                "Black Licorice"
-            ],
-            heart: [
-                "Orchid",
-                "Jasmine",
-                "Leather"
-            ],
-            base: [
-                "Chocolate",
-                "Vetiver",
-                "Patchouli",
-                "Musk"
-            ]
-        },
-        characteristics: {
-            concentration: "Eau de Parfum",
-            longevity: "8+ hours",
-            season: "Winter",
-            sillage: "Strong"
-        },
-        volume: 100,
-        price: 275,
-        image: "/images/perfumes/velvet-orchid.jpg",
-        availability: "Limited Stock",
-        rating: 4.9,
-        reviews: 156,
-        tags: [
-            "Oriental",
-            "Floral",
-            "Dark",
-            "Sensual"
-        ],
-        story: "A mysterious blend for those who dare to be different.",
-        isNew: false,
-        isLimited: true
-    },
-    {
         id: "ocean-breeze",
         name: "Ocean Breeze",
         frenchName: "Brise Océane",
@@ -591,50 +546,6 @@ const PERFUME_PRODUCTS = [
         ],
         story: "A celebration of nature's sweetest treasures mixed with exotic spices.",
         isNew: false,
-        isLimited: false
-    },
-    {
-        id: "silk-jasmine",
-        name: "Silk Jasmine",
-        frenchName: "Jasmin Soyeux",
-        description: "Delicate jasmine softened with creamy florals and a touch of vanilla.",
-        profile: {
-            top: [
-                "Mandarin",
-                "Cassia",
-                "Osmanthus"
-            ],
-            heart: [
-                "Jasmine Sambac",
-                "Rose",
-                "Tuberose"
-            ],
-            base: [
-                "Vanilla",
-                "Musk",
-                "Almond"
-            ]
-        },
-        characteristics: {
-            concentration: "Eau de Parfum",
-            longevity: "6-8 hours",
-            season: "Spring",
-            sillage: "Soft"
-        },
-        volume: 75,
-        price: 195,
-        image: "/images/perfumes/silk-jasmine.jpg",
-        availability: "In Stock",
-        rating: 4.7,
-        reviews: 189,
-        tags: [
-            "Floral",
-            "Creamy",
-            "Feminine",
-            "Elegant"
-        ],
-        story: "Softness and elegance captured in a bottle.",
-        isNew: true,
         isLimited: false
     },
     {
@@ -817,94 +728,6 @@ const PERFUME_PRODUCTS = [
         isLimited: false
     },
     {
-        id: "vetiver-night",
-        name: "Vetiver Night",
-        frenchName: "Nuit de Vétiver",
-        description: "Fresh vetiver paired with cool greens and a hint of citrus darkness.",
-        profile: {
-            top: [
-                "Grapefruit",
-                "Lime",
-                "Galbanum"
-            ],
-            heart: [
-                "Vetiver",
-                "Violet Leaf",
-                "Geranium"
-            ],
-            base: [
-                "Musk",
-                "Cedarwood",
-                "Ambrette Seed"
-            ]
-        },
-        characteristics: {
-            concentration: "Eau de Parfum",
-            longevity: "8+ hours",
-            season: "Summer",
-            sillage: "Moderate"
-        },
-        volume: 100,
-        price: 185,
-        image: "/images/perfumes/vetiver-night.jpg",
-        availability: "In Stock",
-        rating: 4.7,
-        reviews: 165,
-        tags: [
-            "Fresh",
-            "Green",
-            "Citrus",
-            "Unisex"
-        ],
-        story: "Cool vetiver under the summer moonlight.",
-        isNew: false,
-        isLimited: false
-    },
-    {
-        id: "vanilla-caramel",
-        name: "Vanilla Caramel",
-        frenchName: "Vanille Caramel",
-        description: "Creamy vanilla layered with buttery caramel and toasted almond.",
-        profile: {
-            top: [
-                "Tonka Bean",
-                "Caramel",
-                "Nutmeg"
-            ],
-            heart: [
-                "Vanilla",
-                "Almond",
-                "Heliotrope"
-            ],
-            base: [
-                "Amber",
-                "Sandalwood",
-                "Musk"
-            ]
-        },
-        characteristics: {
-            concentration: "Eau de Parfum",
-            longevity: "8+ hours",
-            season: "Year-round",
-            sillage: "Strong"
-        },
-        volume: 100,
-        price: 175,
-        image: "/images/perfumes/vanilla-caramel.jpg",
-        availability: "In Stock",
-        rating: 4.9,
-        reviews: 445,
-        tags: [
-            "Gourmand",
-            "Vanilla",
-            "Sweet",
-            "Popular"
-        ],
-        story: "A guilty pleasure that feels like a warm embrace.",
-        isNew: false,
-        isLimited: false
-    },
-    {
         id: "bergamot-lavender",
         name: "Bergamot Lavender",
         frenchName: "Bergamote Lavande",
@@ -947,95 +770,6 @@ const PERFUME_PRODUCTS = [
         story: "Calm and clarity in every spray.",
         isNew: false,
         isLimited: false
-    },
-    {
-        id: "white-musk",
-        name: "White Musk",
-        frenchName: "Musc Blanc",
-        description: "Pure white musks with soft florals and a hint of creamy aldehydes.",
-        profile: {
-            top: [
-                "Aldehydes",
-                "Pink Pepper",
-                "Mandarin"
-            ],
-            heart: [
-                "Rose",
-                "Jasmine",
-                "Lilac"
-            ],
-            base: [
-                "White Musk",
-                "Sandalwood",
-                "Amber"
-            ]
-        },
-        characteristics: {
-            concentration: "Eau de Parfum",
-            longevity: "6-8 hours",
-            season: "Year-round",
-            sillage: "Soft"
-        },
-        volume: 100,
-        price: 165,
-        image: "/images/perfumes/white-musk.jpg",
-        availability: "In Stock",
-        rating: 4.7,
-        reviews: 176,
-        tags: [
-            "Musky",
-            "Floral",
-            "Soft",
-            "Feminine"
-        ],
-        story: "Simplicity and purity in its most beautiful form.",
-        isNew: false,
-        isLimited: false
-    },
-    {
-        id: "spice-route",
-        name: "Spice Route",
-        frenchName: "Route des Épices",
-        description: "A journey through exotic spices with warm woods and precious resins.",
-        profile: {
-            top: [
-                "Pepper",
-                "Cinnamon",
-                "Clove"
-            ],
-            heart: [
-                "Cardamom",
-                "Cumin",
-                "Saffron"
-            ],
-            base: [
-                "Oud",
-                "Amber",
-                "Frankincense",
-                "Sandalwood"
-            ]
-        },
-        characteristics: {
-            concentration: "Eau de Parfum",
-            longevity: "8+ hours",
-            season: "Winter",
-            sillage: "Intense"
-        },
-        volume: 100,
-        price: 265,
-        image: "/images/perfumes/spice-route.jpg",
-        availability: "Limited Stock",
-        rating: 4.9,
-        reviews: 201,
-        tags: [
-            "Oriental",
-            "Spicy",
-            "Exotic",
-            "Luxury"
-        ],
-        story: "An olfactory expedition through the ancient silk roads.",
-        isNew: false,
-        isLimited: true
     },
     {
         id: "moonlight-gardenia",
@@ -1168,51 +902,6 @@ const PERFUME_PRODUCTS = [
             "Feminine"
         ],
         story: "The refined elegance of iris petals on silk.",
-        isNew: false,
-        isLimited: false
-    },
-    {
-        id: "sea-salt-driftwood",
-        name: "Sea Salt & Driftwood",
-        frenchName: "Sel Marin et Bois Flotté",
-        description: "Minerale sea salt with weathered driftwood and aquatic notes.",
-        profile: {
-            top: [
-                "Sea Salt",
-                "Calone",
-                "Neroli"
-            ],
-            heart: [
-                "Seaweed Accord",
-                "Ambrette",
-                "Lily"
-            ],
-            base: [
-                "Driftwood",
-                "Ambroxan",
-                "Musk",
-                "Cedar"
-            ]
-        },
-        characteristics: {
-            concentration: "Eau de Toilette",
-            longevity: "6-8 hours",
-            season: "Summer",
-            sillage: "Moderate"
-        },
-        volume: 100,
-        price: 175,
-        image: "/images/perfumes/sea-salt-driftwood.jpg",
-        availability: "In Stock",
-        rating: 4.6,
-        reviews: 198,
-        tags: [
-            "Fresh",
-            "Marine",
-            "Coastal",
-            "Unisex"
-        ],
-        story: "The raw beauty of untamed coastlines.",
         isNew: false,
         isLimited: false
     }

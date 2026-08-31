@@ -1,4 +1,4 @@
-import { NextResponse, type NextRequest } from 'next/server';
+import { NextResponse, type NextRequest } from "next/server";
 
 /**
  * Middleware Next.js for security headers, authentication checks, and request filtering.
@@ -23,44 +23,50 @@ export function middleware(request: NextRequest) {
     "frame-ancestors 'none'",
     "base-uri 'self'",
     "form-action 'self'",
-  ].join('; ');
+  ].join("; ");
 
-  response.headers.set('Content-Security-Policy', csp);
+  response.headers.set("Content-Security-Policy", csp);
 
   // 2. HSTS: Enforce HTTPS for 1 year (with subdomains)
   response.headers.set(
-    'Strict-Transport-Security',
-    'max-age=31536000; includeSubDomains; preload'
+    "Strict-Transport-Security",
+    "max-age=31536000; includeSubDomains; preload",
   );
 
   // 3. X-Content-Type-Options: Prevent MIME sniffing
-  response.headers.set('X-Content-Type-Options', 'nosniff');
+  response.headers.set("X-Content-Type-Options", "nosniff");
 
   // 4. X-Frame-Options: Clickjacking protection
-  response.headers.set('X-Frame-Options', 'DENY');
+  response.headers.set("X-Frame-Options", "DENY");
 
   // 5. X-XSS-Protection: Enable browser XSS filters (legacy, but defense in depth)
-  response.headers.set('X-XSS-Protection', '1; mode=block');
+  response.headers.set("X-XSS-Protection", "1; mode=block");
 
   // 6. Referrer-Policy: Control referrer information
-  response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+  response.headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
 
   // 7. Permissions-Policy: Disable unnecessary APIs
   response.headers.set(
-    'Permissions-Policy',
-    'geolocation=(), microphone=(), camera=(), payment=(self)'
+    "Permissions-Policy",
+    "geolocation=(), microphone=(), camera=(), payment=(self)",
   );
 
   // 8. Cache-Control: Security + Performance headers
-  if (request.nextUrl.pathname.startsWith('/api')) {
+  if (request.nextUrl.pathname.startsWith("/api")) {
     // API routes: No caching, must revalidate
-    response.headers.set('Cache-Control', 'no-store, must-revalidate');
+    response.headers.set("Cache-Control", "no-store, must-revalidate");
   } else if (request.nextUrl.pathname.match(/\.(js|css|webp|png|jpg|svg)$/)) {
     // Static assets: Aggressive caching with immutable flag
-    response.headers.set('Cache-Control', 'public, max-age=31536000, immutable');
+    response.headers.set(
+      "Cache-Control",
+      "public, max-age=31536000, immutable",
+    );
   } else {
     // HTML pages: Validate on each request
-    response.headers.set('Cache-Control', 'public, max-age=3600, s-maxage=86400');
+    response.headers.set(
+      "Cache-Control",
+      "public, max-age=3600, s-maxage=86400",
+    );
   }
 
   // ============================================================================
@@ -70,16 +76,20 @@ export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
   // Protected routes: Redirect to login if no session
-  const protectedRoutes = ['/dashboard', '/profile', '/orders'];
-  const isProtectedRoute = protectedRoutes.some((route) => pathname.startsWith(route));
+  const protectedRoutes = ["/dashboard", "/profile", "/orders"];
+  const isProtectedRoute = protectedRoutes.some((route) =>
+    pathname.startsWith(route),
+  );
 
   if (isProtectedRoute) {
     // In production, integrate with NextAuth, Clerk, or Auth0
     // For now, we check for an auth token in httpOnly cookie
-    const token = request.cookies.get('auth_token')?.value;
+    const token = request.cookies.get("auth_token")?.value;
 
     if (!token) {
-      return NextResponse.redirect(new URL('/login?redirect=' + pathname, request.url));
+      return NextResponse.redirect(
+        new URL("/login?redirect=" + pathname, request.url),
+      );
     }
 
     // Validate token signature (implement JWT validation)
@@ -95,7 +105,7 @@ export function middleware(request: NextRequest) {
   // ============================================================================
 
   // For production, use a proper rate limiting service (Redis, Upstash)
-  if (pathname.startsWith('/api')) {
+  if (pathname.startsWith("/api")) {
     // Rate limiting would go here
     // const ip = request.ip || request.headers.get('x-forwarded-for') || 'unknown';
     // const key = `rate_limit:${ip}`;
@@ -111,10 +121,10 @@ export function middleware(request: NextRequest) {
   // ============================================================================
 
   if (
-    process.env.NODE_ENV === 'production' &&
-    request.headers.get('x-forwarded-proto') !== 'https'
+    process.env.NODE_ENV === "production" &&
+    request.headers.get("x-forwarded-proto") !== "https"
   ) {
-    const httpsUrl = request.url.replace('http://', 'https://');
+    const httpsUrl = request.url.replace("http://", "https://");
     return NextResponse.redirect(httpsUrl, { status: 308 });
   }
 
@@ -134,6 +144,6 @@ export const config = {
      * - favicon.ico (favicon file)
      * - public folder
      */
-    '/((?!_next/static|_next/image|favicon.ico|public).*)',
+    "/((?!_next/static|_next/image|favicon.ico|public).*)",
   ],
 };

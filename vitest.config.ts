@@ -1,6 +1,7 @@
-import { defineConfig } from 'vitest/config';
-import react from '@vitejs/plugin-react';
-import path from 'path';
+import path from "path";
+
+import react from "@vitejs/plugin-react";
+import { defineConfig } from "vitest/config";
 
 export default defineConfig({
   plugins: [react()],
@@ -8,25 +9,25 @@ export default defineConfig({
     // ========================================================================
     // ENVIRONMENT & SETUP
     // ========================================================================
-    environment: 'jsdom',
+    environment: "jsdom",
     globals: true,
-    setupFiles: ['./__tests__/setup.ts'],
+    setupFiles: ["./__tests__/setup.ts"],
 
     // ========================================================================
     // COVERAGE
     // ========================================================================
     coverage: {
-      provider: 'v8',
-      reporter: ['text', 'json', 'html', 'lcov'],
+      provider: "v8",
+      reporter: ["text", "json", "html", "lcov"],
       exclude: [
-        'node_modules/',
-        '.next/',
-        'coverage/',
-        '**/*.d.ts',
-        '**/*.config.ts',
-        '**/*.config.js',
-        '**/__tests__/**',
-        '**/dist/**',
+        "node_modules/",
+        ".next/",
+        "coverage/",
+        "**/*.d.ts",
+        "**/*.config.ts",
+        "**/*.config.js",
+        "**/__tests__/**",
+        "**/dist/**",
       ],
       thresholds: {
         lines: 80,
@@ -39,8 +40,8 @@ export default defineConfig({
     // ========================================================================
     // INCLUDE / EXCLUDE
     // ========================================================================
-    include: ['**/__tests__/**/*.test.{ts,tsx}'],
-    exclude: ['node_modules', '.next', 'dist'],
+    include: ["**/__tests__/**/*.test.{ts,tsx}"],
+    exclude: ["node_modules", ".next", "dist"],
 
     // ========================================================================
     // PERFORMANCE & PARALLELIZATION
@@ -50,9 +51,9 @@ export default defineConfig({
     // ========================================================================
     // OUTPUT
     // ========================================================================
-    reporters: ['verbose', 'html'],
+    reporters: ["verbose", "html"],
     outputFile: {
-      html: './coverage/test-results.html',
+      html: "./coverage/test-results.html",
     },
 
     // ========================================================================
@@ -67,13 +68,13 @@ export default defineConfig({
   // ============================================================================
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './'),
-      '@/components': path.resolve(__dirname, './components'),
-      '@/lib': path.resolve(__dirname, './lib'),
-      '@/types': path.resolve(__dirname, './types'),
-      '@/app': path.resolve(__dirname, './app'),
-      '@/styles': path.resolve(__dirname, './styles'),
-      '@/public': path.resolve(__dirname, './public'),
+      "@": path.resolve(__dirname, "./"),
+      "@/components": path.resolve(__dirname, "./components"),
+      "@/lib": path.resolve(__dirname, "./lib"),
+      "@/types": path.resolve(__dirname, "./types"),
+      "@/app": path.resolve(__dirname, "./app"),
+      "@/styles": path.resolve(__dirname, "./styles"),
+      "@/public": path.resolve(__dirname, "./public"),
     },
   },
 });

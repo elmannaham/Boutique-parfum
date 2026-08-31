@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/Di-vibez-ent/Lucky_dev/WEb_Design/Boutique%20parfum/app/products/[id]/not-found.tsx"],"sourcesContent":["import Link from \"next/link\";\n\nexport default function NotFound() {\n  return (\n    <div className=\"container mx-auto px-4 py-20 text-center\">\n      <h1 className=\"text-4xl font-bold text-gray-900 mb-4\">\n        Product Not Found\n      </h1>\n      <p className=\"text-lg text-gray-600 mb-8\">\n        The product you're looking for doesn't exist or has been removed.\n      </p>\n      <Link\n        href=\"/products\"\n        className=\"inline-block bg-amber-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-amber-700\"\n      >\n        Back to Products\n      </Link>\n    </div>\n  );\n}\n"],"names":["NotFound","className","href"],"mappings":";;;;;AAAA;;;AAEe,SAASA;IACtB,qBACE,8OAAC;QAAIC,WAAU;;0BACb,8OAAC;gBAAGA,WAAU;0BAAwC;;;;;;0BAGtD,8OAAC;gBAAEA,WAAU;0BAA6B;;;;;;0BAG1C,8OAAC,0LAAI;gBACHC,MAAK;gBACLD,WAAU;0BACX;;;;;;;;;;;;AAKP"}}]
+}

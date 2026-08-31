@@ -1,11 +1,12 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Search, Heart, ShoppingBag, Menu, X } from 'lucide-react';
-import { useCartStore } from '@/lib/store/cartStore';
-import { useWishlistStore } from '@/lib/store/wishlistStore';
+import { motion, AnimatePresence } from "framer-motion";
+import { Search, Heart, ShoppingBag, Menu, X } from "lucide-react";
+import Link from "next/link";
+import { useState, useEffect } from "react";
+
+import { useCartStore } from "@/lib/store/cartStore";
+import { useWishlistStore } from "@/lib/store/wishlistStore";
 
 export function HeaderPremium() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,10 +20,10 @@ export function HeaderPremium() {
   }, []);
 
   const menuItems = [
-    { label: 'Parfums', href: '/products' },
-    { label: 'Collections', href: '/products?family=All' },
-    { label: 'À Propos', href: '/#about' },
-    { label: 'Avis Clients', href: '/#testimonials' },
+    { label: "Parfums", href: "/products" },
+    { label: "Collections", href: "/products?family=All" },
+    { label: "À Propos", href: "/#about" },
+    { label: "Avis Clients", href: "/#testimonials" },
   ];
 
   return (
@@ -54,9 +55,7 @@ export function HeaderPremium() {
                 className="relative text-sm font-medium text-neutral-700 hover:text-amber-900 transition-colors py-1 group"
               >
                 {item.label}
-                <motion.div
-                  className="absolute bottom-0 left-0 h-0.5 w-full bg-amber-600 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"
-                />
+                <motion.div className="absolute bottom-0 left-0 h-0.5 w-full bg-amber-600 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
               </Link>
             ))}
           </nav>
@@ -103,7 +102,7 @@ export function HeaderPremium() {
                   className="absolute top-1 right-1 w-4 h-4 bg-amber-700 text-white text-[10px] rounded-full flex items-center justify-center font-bold"
                   initial={{ scale: 0.5 }}
                   animate={{ scale: 1 }}
-                  transition={{ type: 'spring', stiffness: 500, damping: 15 }}
+                  transition={{ type: "spring", stiffness: 500, damping: 15 }}
                 >
                   {totalCartItems}
                 </motion.span>
@@ -127,7 +126,7 @@ export function HeaderPremium() {
             <motion.div
               className="md:hidden py-4 border-t border-amber-900/10 space-y-1"
               initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
+              animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.25 }}
             >

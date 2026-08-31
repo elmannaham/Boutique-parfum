@@ -1,8 +1,9 @@
-'use client';
+"use client";
 
-import { useNotificationStore } from '@/lib/store/notificationStore';
-import { motion, AnimatePresence } from 'framer-motion';
-import { CheckCircle, Heart, Info, X } from 'lucide-react';
+import { motion, AnimatePresence } from "framer-motion";
+import { CheckCircle, Heart, Info, X } from "lucide-react";
+
+import { useNotificationStore } from "@/lib/store/notificationStore";
 
 export function ToastContainer() {
   const { toasts, removeToast } = useNotificationStore();
@@ -19,14 +20,14 @@ export function ToastContainer() {
             initial={{ opacity: 0, y: 30, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
-            transition={{ type: 'spring', damping: 25, stiffness: 350 }}
+            transition={{ type: "spring", damping: 25, stiffness: 350 }}
             className="pointer-events-auto flex items-start gap-3 p-4 rounded-xl bg-neutral-900/95 text-white shadow-2xl backdrop-blur-md border border-amber-500/20"
           >
-            {toast.type === 'favorite' ? (
+            {toast.type === "favorite" ? (
               <div className="p-1 rounded-full bg-rose-500/20 text-rose-400">
                 <Heart size={18} fill="currentColor" />
               </div>
-            ) : toast.type === 'info' ? (
+            ) : toast.type === "info" ? (
               <div className="p-1 rounded-full bg-blue-500/20 text-blue-400">
                 <Info size={18} />
               </div>
@@ -37,8 +38,14 @@ export function ToastContainer() {
             )}
 
             <div className="flex-1">
-              <h4 className="font-semibold text-sm text-amber-100">{toast.title}</h4>
-              {toast.message && <p className="text-xs text-neutral-300 mt-0.5">{toast.message}</p>}
+              <h4 className="font-semibold text-sm text-amber-100">
+                {toast.title}
+              </h4>
+              {toast.message && (
+                <p className="text-xs text-neutral-300 mt-0.5">
+                  {toast.message}
+                </p>
+              )}
             </div>
 
             <button

@@ -1,9 +1,11 @@
-import Link from 'next/link'
+import Link from "next/link";
 
 export default function NotFound() {
   return (
     <div className="container mx-auto px-4 py-20 text-center">
-      <h1 className="text-4xl font-bold text-gray-900 mb-4">Product Not Found</h1>
+      <h1 className="text-4xl font-bold text-gray-900 mb-4">
+        Product Not Found
+      </h1>
       <p className="text-lg text-gray-600 mb-8">
         The product you're looking for doesn't exist or has been removed.
       </p>
@@ -14,5 +16,5 @@ export default function NotFound() {
         Back to Products
       </Link>
     </div>
-  )
+  );
 }

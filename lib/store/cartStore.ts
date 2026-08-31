@@ -1,6 +1,7 @@
-import { create } from 'zustand';
-import { persist, createJSONStorage } from 'zustand/middleware';
-import type { Product } from '@/types/product';
+import { create } from "zustand";
+import { persist, createJSONStorage } from "zustand/middleware";
+
+import type { Product } from "@/types/product";
 
 export interface CartItem {
   id: string;
@@ -14,7 +15,11 @@ interface CartStore {
   couponCode: string | null;
   discountPercentage: number;
 
-  addItem: (product: Product, quantity?: number, selectedVolume?: number) => void;
+  addItem: (
+    product: Product,
+    quantity?: number,
+    selectedVolume?: number,
+  ) => void;
   removeItem: (productId: string) => void;
   updateQuantity: (productId: string, quantity: number) => void;
   clearCart: () => void;
@@ -39,7 +44,9 @@ export const useCartStore = create<CartStore>()(
       addItem: (product: Product, quantity = 1, selectedVolume = 100) => {
         set((state) => {
           const existingIndex = state.items.findIndex(
-            (item) => item.product.id === product.id && item.selectedVolume === selectedVolume
+            (item) =>
+              item.product.id === product.id &&
+              item.selectedVolume === selectedVolume,
           );
 
           if (existingIndex > -1) {
@@ -70,7 +77,9 @@ export const useCartStore = create<CartStore>()(
 
       removeItem: (productId: string) => {
         set((state) => ({
-          items: state.items.filter((item) => item.product.id !== productId && item.id !== productId),
+          items: state.items.filter(
+            (item) => item.product.id !== productId && item.id !== productId,
+          ),
         }));
       },
 
@@ -84,7 +93,7 @@ export const useCartStore = create<CartStore>()(
           items: state.items.map((item) =>
             item.product.id === productId || item.id === productId
               ? { ...item, quantity }
-              : item
+              : item,
           ),
         }));
       },
@@ -95,11 +104,11 @@ export const useCartStore = create<CartStore>()(
 
       applyCoupon: (code: string) => {
         const cleanCode = code.trim().toUpperCase();
-        if (cleanCode === 'MAETA10' || cleanCode === 'LUXE10') {
+        if (cleanCode === "MAETA10" || cleanCode === "LUXE10") {
           set({ couponCode: cleanCode, discountPercentage: 10 });
           return true;
         }
-        if (cleanCode === 'VIP20' || cleanCode === 'MAISON20') {
+        if (cleanCode === "VIP20" || cleanCode === "MAISON20") {
           set({ couponCode: cleanCode, discountPercentage: 20 });
           return true;
         }
@@ -152,8 +161,8 @@ export const useCartStore = create<CartStore>()(
       },
     }),
     {
-      name: 'maison-maeta-cart',
+      name: "maison-maeta-cart",
       storage: createJSONStorage(() => localStorage),
-    }
-  )
+    },
+  ),
 );

@@ -4,21 +4,30 @@
  */
 
 // Product types
-export type { Product, ProductDetail, ProductCard, ProductFilters, ProductSearchResult, Review, CreateProductInput, UpdateProductInput } from './product';
-export { FragranceFamily, ProductStatus } from './product';
+export type {
+  Product,
+  ProductDetail,
+  ProductCard,
+  ProductFilters,
+  ProductSearchResult,
+  Review,
+  CreateProductInput,
+  UpdateProductInput,
+} from "./product";
+export { FragranceFamily, ProductStatus } from "./product";
 
 // User types
-export type { User, UserProfile, UserPreferences, UserAddress } from './user';
-export { UserRole } from './user';
+export type { User, UserProfile, UserPreferences, UserAddress } from "./user";
+export { UserRole } from "./user";
 
 // Order types
-export type { Order, OrderItem, OrderStatus, CreateOrderInput } from './order';
+export type { Order, OrderItem, OrderStatus, CreateOrderInput } from "./order";
 
 // API response types
-export type { ApiResponse, ApiError, PaginatedResponse } from './api';
+export type { ApiResponse, ApiError, PaginatedResponse } from "./api";
 
 // Cart types
-export type { CartItem, Cart } from './cart';
+export type { CartItem, Cart } from "./cart";
 
 // Authentication types
-export type { AuthSession, AuthUser } from './auth';
+export type { AuthSession, AuthUser } from "./auth";

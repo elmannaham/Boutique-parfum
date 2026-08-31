@@ -1,6 +1,6 @@
-import { afterEach, vi } from 'vitest';
-import { cleanup } from '@testing-library/react';
-import '@testing-library/jest-dom';
+import { cleanup } from "@testing-library/react";
+import { afterEach, vi } from "vitest";
+import "@testing-library/jest-dom";
 
 // Cleanup after each test
 afterEach(() => {
@@ -9,7 +9,7 @@ afterEach(() => {
 });
 
 // Mock window.matchMedia (required for Tailwind CSS media queries)
-Object.defineProperty(window, 'matchMedia', {
+Object.defineProperty(window, "matchMedia", {
   writable: true,
   value: vi.fn().mockImplementation((query) => ({
     matches: false,
@@ -35,13 +35,13 @@ global.IntersectionObserver = class IntersectionObserver {
 } as any;
 
 // Mock next/router
-vi.mock('next/router', () => ({
+vi.mock("next/router", () => ({
   useRouter() {
     return {
-      route: '/',
-      pathname: '/',
+      route: "/",
+      pathname: "/",
       query: {},
-      asPath: '/',
+      asPath: "/",
       push: vi.fn(),
       replace: vi.fn(),
       reload: vi.fn(),
@@ -62,7 +62,7 @@ vi.mock('next/router', () => ({
 }));
 
 // Mock next/navigation
-vi.mock('next/navigation', () => ({
+vi.mock("next/navigation", () => ({
   useRouter() {
     return {
       push: vi.fn(),
@@ -71,7 +71,7 @@ vi.mock('next/navigation', () => ({
     };
   },
   usePathname() {
-    return '/';
+    return "/";
   },
   useSearchParams() {
     return new URLSearchParams();

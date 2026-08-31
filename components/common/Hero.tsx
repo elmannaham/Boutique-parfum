@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { FC } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { ChevronRight } from 'lucide-react';
+import { motion } from "framer-motion";
+import { ChevronRight } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { FC } from "react";
 
 interface HeroProps {
   title: string;
@@ -18,8 +18,8 @@ interface HeroProps {
 const Hero: FC<HeroProps> = ({
   title,
   subtitle,
-  cta_text = 'Découvrir',
-  cta_href = '/products',
+  cta_text = "Découvrir",
+  cta_href = "/products",
   background_image,
   priority = true,
 }) => {
@@ -36,7 +36,11 @@ const Hero: FC<HeroProps> = ({
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
   };
 
   return (
@@ -100,7 +104,10 @@ const Hero: FC<HeroProps> = ({
             className="inline-flex items-center gap-2 rounded-sm bg-amber-600 px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white shadow-lg transition-all duration-300 hover:bg-amber-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
           >
             {cta_text}
-            <ChevronRight size={18} className="transition-transform group-hover:translate-x-1" />
+            <ChevronRight
+              size={18}
+              className="transition-transform group-hover:translate-x-1"
+            />
           </Link>
         </motion.div>
       </motion.div>

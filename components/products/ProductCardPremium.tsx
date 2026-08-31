@@ -1,13 +1,14 @@
-'use client';
+"use client";
 
-import { FC, useState, useEffect } from 'react';
-import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { Heart, ShoppingBag, Sparkles, Star } from 'lucide-react';
-import type { Product } from '@/types/product';
-import { useCartStore } from '@/lib/store/cartStore';
-import { useWishlistStore } from '@/lib/store/wishlistStore';
-import { useNotificationStore } from '@/lib/store/notificationStore';
+import { motion } from "framer-motion";
+import { Heart, ShoppingBag, Sparkles, Star } from "lucide-react";
+import Link from "next/link";
+import { FC, useState, useEffect } from "react";
+
+import { useCartStore } from "@/lib/store/cartStore";
+import { useNotificationStore } from "@/lib/store/notificationStore";
+import { useWishlistStore } from "@/lib/store/wishlistStore";
+import type { Product } from "@/types/product";
 
 interface ProductCardProps {
   product: Product;
@@ -27,15 +28,16 @@ const ProductCardPremium: FC<ProductCardProps> = ({ product }) => {
   }, []);
 
   // Price normalizer: if price > 1000 it's in cents (15999 = 159.99), otherwise it's in euros
-  const rawPriceInCents = product.price > 1000 ? product.price : Math.round(product.price * 100);
+  const rawPriceInCents =
+    product.price > 1000 ? product.price : Math.round(product.price * 100);
   const formattedPrice = (rawPriceInCents / 100).toFixed(2);
 
   const rawOriginalPriceInCents =
     product.original_price && product.original_price > 1000
       ? product.original_price
       : product.original_price
-      ? Math.round(product.original_price * 100)
-      : undefined;
+        ? Math.round(product.original_price * 100)
+        : undefined;
 
   const rating = product.average_rating || 4.8;
   const reviewsCount = product.total_reviews || 24;
@@ -45,9 +47,9 @@ const ProductCardPremium: FC<ProductCardProps> = ({ product }) => {
     e.stopPropagation();
     addItem({ ...product, price: rawPriceInCents }, 1, product.volume || 100);
     addToast({
-      title: 'Ajouté au panier ✨',
+      title: "Ajouté au panier ✨",
       message: `${product.name} (100ml) a été ajouté.`,
-      type: 'success',
+      type: "success",
     });
   };
 
@@ -56,9 +58,9 @@ const ProductCardPremium: FC<ProductCardProps> = ({ product }) => {
     e.stopPropagation();
     const added = toggleFavorite(product);
     addToast({
-      title: added ? 'Coup de cœur ❤️' : 'Retiré des favoris',
-      message: `${product.name} ${added ? 'a été ajouté à vos favoris.' : 'a été retiré de vos favoris.'}`,
-      type: added ? 'favorite' : 'info',
+      title: added ? "Coup de cœur ❤️" : "Retiré des favoris",
+      message: `${product.name} ${added ? "a été ajouté à vos favoris." : "a été retiré de vos favoris."}`,
+      type: added ? "favorite" : "info",
     });
   };
 
@@ -120,10 +122,13 @@ const ProductCardPremium: FC<ProductCardProps> = ({ product }) => {
                 {product.fragrance_family}
               </span>
               <span className="text-xs text-neutral-500 font-medium">
-                {product.concentration === 'eau_de_parfum' && 'Eau de Parfum'}
-                {product.concentration === 'eau_de_toilette' && 'Eau de Toilette'}
-                {product.concentration === 'pure_parfum' && 'Extrait de Parfum'}
-                {(!product.concentration || product.concentration === 'eau_de_cologne') && 'Eau de Parfum'}
+                {product.concentration === "eau_de_parfum" && "Eau de Parfum"}
+                {product.concentration === "eau_de_toilette" &&
+                  "Eau de Toilette"}
+                {product.concentration === "pure_parfum" && "Extrait de Parfum"}
+                {(!product.concentration ||
+                  product.concentration === "eau_de_cologne") &&
+                  "Eau de Parfum"}
               </span>
             </div>
 
@@ -139,7 +144,11 @@ const ProductCardPremium: FC<ProductCardProps> = ({ product }) => {
                   <Star
                     key={i}
                     size={13}
-                    className={i < Math.floor(rating) ? 'fill-amber-400 text-amber-400' : 'text-neutral-300'}
+                    className={
+                      i < Math.floor(rating)
+                        ? "fill-amber-400 text-amber-400"
+                        : "text-neutral-300"
+                    }
                   />
                 ))}
               </div>
@@ -155,11 +164,12 @@ const ProductCardPremium: FC<ProductCardProps> = ({ product }) => {
               <span className="font-playfair text-2xl font-bold text-amber-950">
                 €{formattedPrice}
               </span>
-              {rawOriginalPriceInCents && rawOriginalPriceInCents > rawPriceInCents && (
-                <span className="text-sm text-neutral-400 line-through">
-                  €{(rawOriginalPriceInCents / 100).toFixed(2)}
-                </span>
-              )}
+              {rawOriginalPriceInCents &&
+                rawOriginalPriceInCents > rawPriceInCents && (
+                  <span className="text-sm text-neutral-400 line-through">
+                    €{(rawOriginalPriceInCents / 100).toFixed(2)}
+                  </span>
+                )}
             </div>
 
             {/* Wishlist Button */}
@@ -167,14 +177,18 @@ const ProductCardPremium: FC<ProductCardProps> = ({ product }) => {
               onClick={handleToggleFavorite}
               className={`p-2.5 rounded-full border transition-all ${
                 mounted && isFavorite
-                  ? 'bg-rose-50 border-rose-200 text-rose-600'
-                  : 'border-neutral-200 text-neutral-500 hover:text-rose-600 hover:border-rose-200 hover:bg-rose-50/50'
+                  ? "bg-rose-50 border-rose-200 text-rose-600"
+                  : "border-neutral-200 text-neutral-500 hover:text-rose-600 hover:border-rose-200 hover:bg-rose-50/50"
               }`}
-              aria-label={mounted && isFavorite ? "Retirer des favoris" : "Ajouter aux favoris"}
+              aria-label={
+                mounted && isFavorite
+                  ? "Retirer des favoris"
+                  : "Ajouter aux favoris"
+              }
             >
               <Heart
                 size={16}
-                fill={mounted && isFavorite ? 'currentColor' : 'none'}
+                fill={mounted && isFavorite ? "currentColor" : "none"}
               />
             </button>
           </div>

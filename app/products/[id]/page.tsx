@@ -1,34 +1,37 @@
-import { notFound } from "next/navigation"
-import { HeaderPremium } from "@/components/common/HeaderPremium"
-import { getProductById } from "@/lib/services/productService"
-import Image from "next/image"
+import Image from "next/image";
+import { notFound } from "next/navigation";
+
+import { HeaderPremium } from "@/components/common/HeaderPremium";
+import { getProductById } from "@/lib/services/productService";
 
 interface ProductDetailPageProps {
-  params: { id: string }
+  params: { id: string };
 }
 
-export const revalidate = 60
+export const revalidate = 60;
 
 export async function generateMetadata({ params }: ProductDetailPageProps) {
-  const product = await getProductById(params.id)
+  const product = await getProductById(params.id);
 
   if (!product) {
     return {
       title: "Product Not Found | Maison Maeta",
-    }
+    };
   }
 
   return {
     title: `${product.name} | Maison Maeta`,
     description: product.description,
-  }
+  };
 }
 
-export default async function ProductDetailPage({ params }: ProductDetailPageProps) {
-  const product = await getProductById(params.id)
+export default async function ProductDetailPage({
+  params,
+}: ProductDetailPageProps) {
+  const product = await getProductById(params.id);
 
   if (!product) {
-    notFound()
+    notFound();
   }
 
   return (
@@ -68,7 +71,9 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
 
             <div className="space-y-4 mb-8">
               <div>
-                <span className="font-semibold text-gray-900">Concentration:</span>
+                <span className="font-semibold text-gray-900">
+                  Concentration:
+                </span>
                 <p className="text-gray-600">{product.concentration}</p>
               </div>
               <div>
@@ -100,5 +105,5 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
         </section>
       </main>
     </>
-  )
+  );
 }

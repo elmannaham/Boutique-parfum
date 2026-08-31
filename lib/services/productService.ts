@@ -1,18 +1,20 @@
-import { prisma } from '@/lib/prisma'
-import type { Product } from '@/types'
+import { prisma } from "@/lib/prisma";
+import type { Product } from "@/types";
 
 /**
  * Mapper function to convert Prisma Product model (camelCase) to application Product type (snake_case)
  */
 function mapPrismaProductToProduct(prismaProduct: any): Product {
   const safeJsonParse = (str: string | undefined) => {
-    if (!str) return undefined
-    try {
-      return JSON.parse(str)
-    } catch {
-      return undefined
+    if (!str) {
+      return undefined;
     }
-  }
+    try {
+      return JSON.parse(str);
+    } catch {
+      return undefined;
+    }
+  };
 
   return {
     id: prismaProduct.id,
@@ -42,14 +44,14 @@ function mapPrismaProductToProduct(prismaProduct: any): Product {
     seo_title: prismaProduct.seoTitle,
     seo_description: prismaProduct.seoDescription,
     seo_keywords: safeJsonParse(prismaProduct.seoKeywords),
-  }
+  };
 }
 
 export async function getProducts(): Promise<Product[]> {
   const products = await prisma.product.findMany({
-    orderBy: { createdAt: 'desc' },
-  })
-  return products.map(mapPrismaProductToProduct)
+    orderBy: { createdAt: "desc" },
+  });
+  return products.map(mapPrismaProductToProduct);
 }
 
 export async function getProductById(id: string): Promise<Product | null> {
@@ -58,14 +60,16 @@ export async function getProductById(id: string): Promise<Product | null> {
     include: {
       galleryImages: true,
     },
-  })
-  return product ? mapPrismaProductToProduct(product) : null
+  });
+  return product ? mapPrismaProductToProduct(product) : null;
 }
 
-export async function getFeaturedProducts(limit: number = 6): Promise<Product[]> {
+export async function getFeaturedProducts(
+  limit: number = 6,
+): Promise<Product[]> {
   const products = await prisma.product.findMany({
     take: limit,
-    orderBy: { createdAt: 'desc' },
-  })
-  return products.map(mapPrismaProductToProduct)
+    orderBy: { createdAt: "desc" },
+  });
+  return products.map(mapPrismaProductToProduct);
 }

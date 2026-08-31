@@ -1,9 +1,10 @@
-import type { Product } from '@/types'
-import { ProductCardPremium } from './ProductCardPremium'
+import type { Product } from "@/types";
+
+import { ProductCardPremium } from "./ProductCardPremium";
 
 interface ProductGridProps {
-  products: Product[]
-  variant?: 'featured' | 'all'
+  products: Product[];
+  variant?: "featured" | "all";
 }
 
 export function ProductGrid({ products }: ProductGridProps) {
@@ -12,7 +13,7 @@ export function ProductGrid({ products }: ProductGridProps) {
       <div className="py-12 text-center">
         <p className="text-gray-500">No products available</p>
       </div>
-    )
+    );
   }
 
   return (
@@ -26,5 +27,5 @@ export function ProductGrid({ products }: ProductGridProps) {
         </div>
       ))}
     </div>
-  )
+  );
 }

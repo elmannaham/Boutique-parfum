@@ -3,12 +3,12 @@
  */
 
 export enum OrderStatus {
-  PENDING = 'pending',
-  PROCESSING = 'processing',
-  SHIPPED = 'shipped',
-  DELIVERED = 'delivered',
-  CANCELLED = 'cancelled',
-  REFUNDED = 'refunded',
+  PENDING = "pending",
+  PROCESSING = "processing",
+  SHIPPED = "shipped",
+  DELIVERED = "delivered",
+  CANCELLED = "cancelled",
+  REFUNDED = "refunded",
 }
 
 export interface OrderItem {
@@ -50,8 +50,9 @@ export interface Order {
   };
 
   // Payment & Fulfillment
-  payment_method: 'credit_card' | 'paypal' | 'bank_transfer' | 'apple_pay' | 'google_pay';
-  payment_status: 'pending' | 'completed' | 'failed' | 'refunded';
+  payment_method:
+    "credit_card" | "paypal" | "bank_transfer" | "apple_pay" | "google_pay";
+  payment_status: "pending" | "completed" | "failed" | "refunded";
   status: OrderStatus;
   tracking_number?: string;
 
@@ -64,9 +65,9 @@ export interface Order {
 
 export interface CreateOrderInput {
   items: OrderItem[];
-  shipping_address: Order['shipping_address'];
-  billing_address?: Order['billing_address'];
-  payment_method: Order['payment_method'];
+  shipping_address: Order["shipping_address"];
+  billing_address?: Order["billing_address"];
+  payment_method: Order["payment_method"];
   coupon_code?: string;
   notes?: string;
 }

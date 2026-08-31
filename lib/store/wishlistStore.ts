@@ -1,6 +1,7 @@
-import { create } from 'zustand';
-import { persist, createJSONStorage } from 'zustand/middleware';
-import type { Product } from '@/types/product';
+import { create } from "zustand";
+import { persist, createJSONStorage } from "zustand/middleware";
+
+import type { Product } from "@/types/product";
 
 interface WishlistStore {
   favorites: Product[];
@@ -43,8 +44,8 @@ export const useWishlistStore = create<WishlistStore>()(
       },
     }),
     {
-      name: 'maison-maeta-wishlist',
+      name: "maison-maeta-wishlist",
       storage: createJSONStorage(() => localStorage),
-    }
-  )
+    },
+  ),
 );

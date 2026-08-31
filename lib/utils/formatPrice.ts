@@ -24,32 +24,32 @@ export interface FormatPriceOptions {
  */
 export function formatPrice(
   priceInCents: number,
-  options: FormatPriceOptions = {}
+  options: FormatPriceOptions = {},
 ): string {
   const maxDigits = options.maximumFractionDigits ?? 2;
   const minDigits = options.minimumFractionDigits ?? Math.min(2, maxDigits);
-  const locale = options.locale ?? 'fr-FR';
-  const currency = options.currency ?? 'EUR';
+  const locale = options.locale ?? "fr-FR";
+  const currency = options.currency ?? "EUR";
 
   if (!Number.isInteger(priceInCents) || priceInCents < 0) {
     console.warn(
-      `Invalid price: ${priceInCents}. Expected non-negative integer (cents).`
+      `Invalid price: ${priceInCents}. Expected non-negative integer (cents).`,
     );
-    return '—';
+    return "—";
   }
 
   const priceInMajorUnits = priceInCents / 100;
 
   try {
     const formatted = new Intl.NumberFormat(locale, {
-      style: 'currency',
+      style: "currency",
       currency: currency,
       minimumFractionDigits: minDigits,
       maximumFractionDigits: maxDigits,
     }).format(priceInMajorUnits);
 
     // Normalize non-breaking and thin spaces (\u00A0, \u202F) to standard space for cross-environment consistency
-    return formatted.replace(/[\u00A0\u202F]/g, ' ');
+    return formatted.replace(/[\u00A0\u202F]/g, " ");
   } catch {
     console.error(`Invalid locale/currency: ${locale}/${currency}`);
     return `${priceInMajorUnits.toFixed(2)}`;
@@ -68,7 +68,7 @@ export function formatPrice(
  */
 export function calculateDiscount(
   originalPrice: number,
-  salePrice: number
+  salePrice: number,
 ): { amount: number; percentage: number } {
   if (originalPrice <= 0 || salePrice < 0) {
     return { amount: 0, percentage: 0 };
@@ -89,7 +89,7 @@ export function calculateDiscount(
  */
 export function isOnSale(
   originalPrice: number | undefined,
-  salePrice: number
+  salePrice: number,
 ): boolean {
   return originalPrice !== undefined && originalPrice > salePrice;
 }
@@ -105,7 +105,7 @@ export function isOnSale(
 export function formatPriceRange(
   minPrice: number,
   maxPrice: number,
-  options: FormatPriceOptions = {}
+  options: FormatPriceOptions = {},
 ): string {
   if (minPrice === maxPrice) {
     return formatPrice(minPrice, options);
@@ -124,7 +124,7 @@ export function formatPriceRange(
  * @returns Total amount in cents
  */
 export function calculateOrderTotal(
-  items: Array<{ price: number; quantity: number }>
+  items: Array<{ price: number; quantity: number }>,
 ): number {
   return items.reduce((total, item) => total + item.price * item.quantity, 0);
 }
@@ -138,7 +138,7 @@ export function calculateOrderTotal(
  */
 export function applyDiscount(price: number, discountPercent: number): number {
   if (discountPercent < 0 || discountPercent > 100) {
-    throw new Error('Discount percentage must be between 0 and 100');
+    throw new Error("Discount percentage must be between 0 and 100");
   }
 
   const discountAmount = Math.round((price * discountPercent) / 100);

@@ -5,24 +5,24 @@
 
 // Enumeration for fragrance families (fragrance categories)
 export enum FragranceFamily {
-  FLORAL = 'Floral',
-  FRUITY = 'Fruity',
-  ORIENTAL = 'Oriental',
-  WOODY = 'Woody',
-  FRESH = 'Fresh',
-  AROMATIC = 'Aromatic',
-  CHYPRE = 'Chypre',
-  FOUGERE = 'Fougère',
-  LEATHER = 'Leather',
-  AMBER = 'Amber',
+  FLORAL = "Floral",
+  FRUITY = "Fruity",
+  ORIENTAL = "Oriental",
+  WOODY = "Woody",
+  FRESH = "Fresh",
+  AROMATIC = "Aromatic",
+  CHYPRE = "Chypre",
+  FOUGERE = "Fougère",
+  LEATHER = "Leather",
+  AMBER = "Amber",
 }
 
 // Enumeration for product status
 export enum ProductStatus {
-  AVAILABLE = 'available',
-  OUT_OF_STOCK = 'out_of_stock',
-  COMING_SOON = 'coming_soon',
-  DISCONTINUED = 'discontinued',
+  AVAILABLE = "available",
+  OUT_OF_STOCK = "out_of_stock",
+  COMING_SOON = "coming_soon",
+  DISCONTINUED = "discontinued",
 }
 
 // Core Product interface (mapped to snake_case by productService)
@@ -82,21 +82,20 @@ export interface ProductDetail extends Product {
 }
 
 // Minimal product representation (for lists, cards)
-export interface ProductCard
-  extends Pick<
-    Product,
-    | 'id'
-    | 'name'
-    | 'slug'
-    | 'price'
-    | 'original_price'
-    | 'image_url'
-    | 'fragrance_family'
-    | 'is_limited_edition'
-    | 'stock'
-    | 'average_rating'
-  > {
-  description?: Product['description'];
+export interface ProductCard extends Pick<
+  Product,
+  | "id"
+  | "name"
+  | "slug"
+  | "price"
+  | "original_price"
+  | "image_url"
+  | "fragrance_family"
+  | "is_limited_edition"
+  | "stock"
+  | "average_rating"
+> {
+  description?: Product["description"];
 }
 
 // Product filtering options
@@ -106,7 +105,7 @@ export interface ProductFilters {
   max_price?: number; // In cents
   in_stock_only?: boolean;
   limited_edition_only?: boolean;
-  sort_by?: 'newest' | 'price_asc' | 'price_desc' | 'rating' | 'popular';
+  sort_by?: "newest" | "price_asc" | "price_desc" | "rating" | "popular";
   search_query?: string;
   page?: number;
   per_page?: number;
@@ -136,10 +135,13 @@ export interface Review {
 }
 
 // Product mutation types (for API operations)
-export interface CreateProductInput
-  extends Omit<Product, 'id' | 'created_at' | 'updated_at'> {}
+export interface CreateProductInput extends Omit<
+  Product,
+  "id" | "created_at" | "updated_at"
+> {}
 
-export interface UpdateProductInput
-  extends Partial<Omit<Product, 'id' | 'created_at' | 'updated_at'>> {
+export interface UpdateProductInput extends Partial<
+  Omit<Product, "id" | "created_at" | "updated_at">
+> {
   id: string;
 }

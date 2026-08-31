@@ -3,14 +3,14 @@
  */
 
 export enum UserRole {
-  CUSTOMER = 'customer',
-  ADMIN = 'admin',
-  MODERATOR = 'moderator',
+  CUSTOMER = "customer",
+  ADMIN = "admin",
+  MODERATOR = "moderator",
 }
 
 export interface UserAddress {
   id: string;
-  type: 'billing' | 'shipping';
+  type: "billing" | "shipping";
   street: string;
   city: string;
   postal_code: string;
@@ -20,7 +20,7 @@ export interface UserAddress {
 }
 
 export interface UserPreferences {
-  language: 'fr' | 'en' | 'de' | 'es';
+  language: "fr" | "en" | "de" | "es";
   email_notifications: boolean;
   sms_notifications: boolean;
   marketing_emails: boolean;
@@ -49,10 +49,13 @@ export interface User {
   last_login?: Date;
 }
 
-export interface CreateUserInput
-  extends Omit<User, 'id' | 'created_at' | 'updated_at'> {
+export interface CreateUserInput extends Omit<
+  User,
+  "id" | "created_at" | "updated_at"
+> {
   password: string;
 }
 
-export interface UpdateUserInput
-  extends Partial<Omit<User, 'id' | 'created_at' | 'updated_at' | 'role'>> {}
+export interface UpdateUserInput extends Partial<
+  Omit<User, "id" | "created_at" | "updated_at" | "role">
+> {}

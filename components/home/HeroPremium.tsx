@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import Link from 'next/link';
-import { ChevronRight, Sparkles } from 'lucide-react';
+import { motion } from "framer-motion";
+import { ChevronRight, Sparkles } from "lucide-react";
+import Link from "next/link";
 
 export function HeroPremium() {
   const containerVariants = {
@@ -21,7 +21,7 @@ export function HeroPremium() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 1, ease: 'easeOut' },
+      transition: { duration: 1, ease: "easeOut" },
     },
   };
 
@@ -32,9 +32,9 @@ export function HeroPremium() {
         className="absolute inset-0 opacity-40"
         animate={{
           background: [
-            'radial-gradient(at 20% 50%, rgba(217, 119, 6, 0.3) 0%, transparent 50%)',
-            'radial-gradient(at 80% 50%, rgba(217, 119, 6, 0.3) 0%, transparent 50%)',
-            'radial-gradient(at 20% 50%, rgba(217, 119, 6, 0.3) 0%, transparent 50%)',
+            "radial-gradient(at 20% 50%, rgba(217, 119, 6, 0.3) 0%, transparent 50%)",
+            "radial-gradient(at 80% 50%, rgba(217, 119, 6, 0.3) 0%, transparent 50%)",
+            "radial-gradient(at 20% 50%, rgba(217, 119, 6, 0.3) 0%, transparent 50%)",
           ],
         }}
         transition={{ duration: 8, repeat: Infinity }}
@@ -47,7 +47,7 @@ export function HeroPremium() {
           y: [0, -30, 0],
           x: [0, 20, 0],
         }}
-        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
         className="absolute bottom-20 left-10 w-80 h-80 bg-amber-700 rounded-full blur-3xl opacity-15"
@@ -55,7 +55,7 @@ export function HeroPremium() {
           y: [0, 30, 0],
           x: [0, -20, 0],
         }}
-        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
       />
 
       {/* Content */}
@@ -71,7 +71,9 @@ export function HeroPremium() {
             variants={itemVariants}
           >
             <Sparkles size={16} className="text-amber-300" />
-            <span className="text-sm font-semibold text-amber-200">Luxury Perfume Boutique</span>
+            <span className="text-sm font-semibold text-amber-200">
+              Luxury Perfume Boutique
+            </span>
           </motion.div>
 
           {/* Main Heading */}
@@ -87,7 +89,9 @@ export function HeroPremium() {
             className="mb-12 text-xl md:text-2xl text-amber-100 font-light max-w-3xl mx-auto leading-relaxed"
             variants={itemVariants}
           >
-            Discover handcrafted luxury fragrances that transcend the ordinary. Each scent is a masterpiece of elegance, artistry, and sophistication.
+            Discover handcrafted luxury fragrances that transcend the ordinary.
+            Each scent is a masterpiece of elegance, artistry, and
+            sophistication.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -106,7 +110,10 @@ export function HeroPremium() {
               />
               <span className="relative flex items-center gap-2">
                 Explore Collection
-                <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                <ChevronRight
+                  size={20}
+                  className="group-hover:translate-x-1 transition-transform"
+                />
               </span>
             </Link>
 
@@ -124,12 +131,14 @@ export function HeroPremium() {
             variants={itemVariants}
           >
             {[
-              { label: '25+ Years', value: 'of Excellence' },
-              { label: '100+', value: 'Fragrances' },
-              { label: '50K+', value: 'Happy Clients' },
+              { label: "25+ Years", value: "of Excellence" },
+              { label: "100+", value: "Fragrances" },
+              { label: "50K+", value: "Happy Clients" },
             ].map((stat, idx) => (
               <motion.div key={idx} whileHover={{ scale: 1.05 }}>
-                <p className="text-3xl font-bold text-amber-400">{stat.label}</p>
+                <p className="text-3xl font-bold text-amber-400">
+                  {stat.label}
+                </p>
                 <p className="text-sm text-amber-200/60 mt-2">{stat.value}</p>
               </motion.div>
             ))}

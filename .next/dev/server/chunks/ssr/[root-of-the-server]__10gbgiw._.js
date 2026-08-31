@@ -23,16 +23,22 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$services$2f$productSe
 ;
 ;
 const metadata = {
-    title: 'All Products | Maison Maeta',
-    description: 'Discover our complete collection of luxury fragrances'
+    title: "All Products | Maison Maeta",
+    description: "Discover our complete collection of luxury fragrances"
 };
 async function ProductListingPage() {
-    const allProducts = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$services$2f$productService$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["getProducts"])();
+    let allProducts = [];
+    try {
+        allProducts = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$services$2f$productService$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["getProducts"])();
+    } catch (error) {
+        // Database not yet initialized or unavailable
+        console.log("Products unavailable at build time");
+    }
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Fragment"], {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$common$2f$HeaderPremium$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["HeaderPremium"], {}, void 0, false, {
                 fileName: "[project]/app/products/page.tsx",
-                lineNumber: 15,
+                lineNumber: 22,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
@@ -46,7 +52,7 @@ async function ProductListingPage() {
                                 children: "All Fragrances"
                             }, void 0, false, {
                                 fileName: "[project]/app/products/page.tsx",
-                                lineNumber: 19,
+                                lineNumber: 26,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -54,13 +60,13 @@ async function ProductListingPage() {
                                 children: "Explore our complete collection of luxury perfumes"
                             }, void 0, false, {
                                 fileName: "[project]/app/products/page.tsx",
-                                lineNumber: 22,
+                                lineNumber: 29,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/products/page.tsx",
-                        lineNumber: 18,
+                        lineNumber: 25,
                         columnNumber: 9
                     }, this),
                     allProducts.length > 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$products$2f$ProductGrid$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["ProductGrid"], {
@@ -68,7 +74,7 @@ async function ProductListingPage() {
                         variant: "all"
                     }, void 0, false, {
                         fileName: "[project]/app/products/page.tsx",
-                        lineNumber: 28,
+                        lineNumber: 35,
                         columnNumber: 11
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "text-center py-20",
@@ -77,24 +83,24 @@ async function ProductListingPage() {
                             children: "No products available"
                         }, void 0, false, {
                             fileName: "[project]/app/products/page.tsx",
-                            lineNumber: 31,
+                            lineNumber: 38,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/products/page.tsx",
-                        lineNumber: 30,
+                        lineNumber: 37,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/products/page.tsx",
-                lineNumber: 17,
+                lineNumber: 24,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/products/page.tsx",
-        lineNumber: 14,
+        lineNumber: 21,
         columnNumber: 5
     }, this);
 }
@@ -169,12 +175,12 @@ function ProductGrid({ products }) {
                 children: "No products available"
             }, void 0, false, {
                 fileName: "[project]/components/products/ProductGrid.tsx",
-                lineNumber: 13,
+                lineNumber: 14,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/components/products/ProductGrid.tsx",
-            lineNumber: 12,
+            lineNumber: 13,
             columnNumber: 7
         }, this);
     }
@@ -187,17 +193,17 @@ function ProductGrid({ products }) {
                     product: product
                 }, void 0, false, {
                     fileName: "[project]/components/products/ProductGrid.tsx",
-                    lineNumber: 25,
+                    lineNumber: 26,
                     columnNumber: 11
                 }, this)
             }, product.id, false, {
                 fileName: "[project]/components/products/ProductGrid.tsx",
-                lineNumber: 24,
+                lineNumber: 25,
                 columnNumber: 9
             }, this))
     }, void 0, false, {
         fileName: "[project]/components/products/ProductGrid.tsx",
-        lineNumber: 19,
+        lineNumber: 20,
         columnNumber: 5
     }, this);
 }
@@ -216,9 +222,9 @@ var __TURBOPACK__imported__module__$5b$externals$5d2f40$prisma$2f$client__$5b$ex
 const globalForPrisma = globalThis;
 const prisma = globalForPrisma.prisma ?? new __TURBOPACK__imported__module__$5b$externals$5d2f40$prisma$2f$client__$5b$external$5d$__$2840$prisma$2f$client$2c$__cjs$2c$__$5b$project$5d2f$node_modules$2f40$prisma$2f$client$29$__["PrismaClient"]({
     log: ("TURBOPACK compile-time truthy", 1) ? [
-        'query',
-        'error',
-        'warn'
+        "query",
+        "error",
+        "warn"
     ] : "TURBOPACK unreachable"
 });
 if ("TURBOPACK compile-time truthy", 1) {
@@ -243,7 +249,9 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$prisma$2e$ts__$5b$app
  * Mapper function to convert Prisma Product model (camelCase) to application Product type (snake_case)
  */ function mapPrismaProductToProduct(prismaProduct) {
     const safeJsonParse = (str)=>{
-        if (!str) return undefined;
+        if (!str) {
+            return undefined;
+        }
         try {
             return JSON.parse(str);
         } catch  {
@@ -283,7 +291,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$prisma$2e$ts__$5b$app
 async function getProducts() {
     const products = await __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].product.findMany({
         orderBy: {
-            createdAt: 'desc'
+            createdAt: "desc"
         }
     });
     return products.map(mapPrismaProductToProduct);
@@ -303,7 +311,7 @@ async function getFeaturedProducts(limit = 6) {
     const products = await __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].product.findMany({
         take: limit,
         orderBy: {
-            createdAt: 'desc'
+            createdAt: "desc"
         }
     });
     return products.map(mapPrismaProductToProduct);

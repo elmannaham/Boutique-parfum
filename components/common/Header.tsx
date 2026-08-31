@@ -1,5 +1,5 @@
-import Link from 'next/link'
-import { Search, Heart, ShoppingBag, User } from 'lucide-react'
+import { Search, Heart, ShoppingBag, User } from "lucide-react";
+import Link from "next/link";
 
 export function Header() {
   return (
@@ -37,5 +37,5 @@ export function Header() {
         </div>
       </nav>
     </header>
-  )
+  );
 }

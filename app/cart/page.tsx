@@ -1,8 +1,6 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Trash2,
   Plus,
@@ -13,16 +11,19 @@ import {
   Gift,
   Tag,
   Truck,
-} from 'lucide-react';
-import { useCartStore } from '@/lib/store/cartStore';
-import { useNotificationStore } from '@/lib/store/notificationStore';
+} from "lucide-react";
+import Link from "next/link";
+import { useState, useEffect } from "react";
+
+import { useCartStore } from "@/lib/store/cartStore";
+import { useNotificationStore } from "@/lib/store/notificationStore";
 
 export default function CartPage() {
   const [mounted, setMounted] = useState(false);
-  const [couponInput, setCouponInput] = useState('');
-  const [couponError, setCouponError] = useState('');
+  const [couponInput, setCouponInput] = useState("");
+  const [couponError, setCouponError] = useState("");
   const [isGift, setIsGift] = useState(false);
-  const [giftNote, setGiftNote] = useState('');
+  const [giftNote, setGiftNote] = useState("");
 
   const items = useCartStore((state) => state.items);
   const updateQuantity = useCartStore((state) => state.updateQuantity);
@@ -53,22 +54,30 @@ export default function CartPage() {
   }
 
   const freeShippingThreshold = 10000; // 100€
-  const amountNeededForFreeShipping = Math.max(0, freeShippingThreshold - subtotalInCents);
-  const freeShippingProgress = Math.min(100, (subtotalInCents / freeShippingThreshold) * 100);
+  const amountNeededForFreeShipping = Math.max(
+    0,
+    freeShippingThreshold - subtotalInCents,
+  );
+  const freeShippingProgress = Math.min(
+    100,
+    (subtotalInCents / freeShippingThreshold) * 100,
+  );
 
   const handleApplyCoupon = (e: React.FormEvent) => {
     e.preventDefault();
-    setCouponError('');
-    if (!couponInput.trim()) return;
+    setCouponError("");
+    if (!couponInput.trim()) {
+      return;
+    }
 
     const success = applyCoupon(couponInput);
     if (success) {
       addToast({
-        title: 'Code promo appliqué ! 🎉',
+        title: "Code promo appliqué ! 🎉",
         message: `Vous bénéficiez d'une réduction spéciale.`,
-        type: 'success',
+        type: "success",
       });
-      setCouponInput('');
+      setCouponInput("");
     } else {
       setCouponError('Code invalide. Essayez "MAETA10" ou "VIP20".');
     }
@@ -95,7 +104,7 @@ export default function CartPage() {
             <button
               onClick={() => {
                 clearCart();
-                addToast({ title: 'Panier vidé', type: 'info' });
+                addToast({ title: "Panier vidé", type: "info" });
               }}
               className="text-xs text-neutral-500 hover:text-rose-600 transition-colors self-start sm:self-auto"
             >
@@ -119,7 +128,8 @@ export default function CartPage() {
               Votre panier est vide
             </h2>
             <p className="text-neutral-600 text-sm max-w-md mx-auto mb-8 font-light leading-relaxed">
-              Laissez-vous tenter par nos créations olfactives artisanales et trouvez votre signature unique.
+              Laissez-vous tenter par nos créations olfactives artisanales et
+              trouvez votre signature unique.
             </p>
             <Link
               href="/products"
@@ -139,21 +149,30 @@ export default function CartPage() {
                   <span className="flex items-center gap-1.5 text-amber-950">
                     <Truck size={15} className="text-amber-800" />
                     {amountNeededForFreeShipping === 0 ? (
-                      <span className="text-emerald-700">Félicitations ! Vous bénéficiez de la livraison offerte ✨</span>
+                      <span className="text-emerald-700">
+                        Félicitations ! Vous bénéficiez de la livraison offerte
+                        ✨
+                      </span>
                     ) : (
                       <span>
-                        Plus que <strong className="text-amber-900">€{(amountNeededForFreeShipping / 100).toFixed(2)}</strong> pour la livraison offerte
+                        Plus que{" "}
+                        <strong className="text-amber-900">
+                          €{(amountNeededForFreeShipping / 100).toFixed(2)}
+                        </strong>{" "}
+                        pour la livraison offerte
                       </span>
                     )}
                   </span>
-                  <span className="text-neutral-500">{Math.round(freeShippingProgress)}%</span>
+                  <span className="text-neutral-500">
+                    {Math.round(freeShippingProgress)}%
+                  </span>
                 </div>
                 <div className="w-full h-2 bg-neutral-100 rounded-full overflow-hidden">
                   <motion.div
                     className="h-full bg-gradient-to-r from-amber-600 to-amber-800 rounded-full"
                     initial={{ width: 0 }}
                     animate={{ width: `${freeShippingProgress}%` }}
-                    transition={{ duration: 0.6, ease: 'easeOut' }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
                   />
                 </div>
               </div>
@@ -163,7 +182,10 @@ export default function CartPage() {
                 <AnimatePresence>
                   {items.map((item) => {
                     const priceInEuros = (item.product.price / 100).toFixed(2);
-                    const itemTotalInEuros = ((item.product.price * item.quantity) / 100).toFixed(2);
+                    const itemTotalInEuros = (
+                      (item.product.price * item.quantity) /
+                      100
+                    ).toFixed(2);
 
                     return (
                       <motion.div
@@ -195,7 +217,11 @@ export default function CartPage() {
                               {item.product.name}
                             </Link>
                             <p className="text-xs text-neutral-500 mt-0.5">
-                              Flacon {item.selectedVolume || item.product.volume || 100}ml • €{priceInEuros} l'unité
+                              Flacon{" "}
+                              {item.selectedVolume ||
+                                item.product.volume ||
+                                100}
+                              ml • €{priceInEuros} l'unité
                             </p>
                           </div>
                         </div>
@@ -205,7 +231,12 @@ export default function CartPage() {
                           {/* Quantity Selector */}
                           <div className="flex items-center border border-neutral-200 rounded-xl bg-neutral-50 p-1">
                             <button
-                              onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
+                              onClick={() =>
+                                updateQuantity(
+                                  item.product.id,
+                                  item.quantity - 1,
+                                )
+                              }
                               className="p-1.5 rounded-lg hover:bg-white text-neutral-600 transition-colors"
                               aria-label="Diminuer la quantité"
                             >
@@ -215,7 +246,12 @@ export default function CartPage() {
                               {item.quantity}
                             </span>
                             <button
-                              onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
+                              onClick={() =>
+                                updateQuantity(
+                                  item.product.id,
+                                  item.quantity + 1,
+                                )
+                              }
                               className="p-1.5 rounded-lg hover:bg-white text-neutral-600 transition-colors"
                               aria-label="Augmenter la quantité"
                             >
@@ -234,7 +270,10 @@ export default function CartPage() {
                           <button
                             onClick={() => {
                               removeItem(item.id);
-                              addToast({ title: 'Article retiré', type: 'info' });
+                              addToast({
+                                title: "Article retiré",
+                                type: "info",
+                              });
                             }}
                             className="p-2 text-neutral-400 hover:text-rose-600 hover:bg-rose-50 rounded-xl transition-colors"
                             aria-label="Supprimer cet article"
@@ -250,15 +289,21 @@ export default function CartPage() {
 
               {/* Gift Message Accordion */}
               <div className="p-6 rounded-3xl bg-white border border-neutral-200/80 shadow-sm">
-                <div className="flex items-center justify-between cursor-pointer" onClick={() => setIsGift(!isGift)}>
+                <div
+                  className="flex items-center justify-between cursor-pointer"
+                  onClick={() => setIsGift(!isGift)}
+                >
                   <div className="flex items-center gap-3">
                     <div className="p-2 rounded-xl bg-amber-50 text-amber-900">
                       <Gift size={18} />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-sm text-amber-950">C'est un cadeau ?</h4>
+                      <h4 className="font-semibold text-sm text-amber-950">
+                        C'est un cadeau ?
+                      </h4>
                       <p className="text-xs text-neutral-500 font-light">
-                        Ajoutez un mot personnalisé et un emballage luxueux offert.
+                        Ajoutez un mot personnalisé et un emballage luxueux
+                        offert.
                       </p>
                     </div>
                   </div>
@@ -273,11 +318,12 @@ export default function CartPage() {
                 {isGift && (
                   <motion.div
                     initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
+                    animate={{ opacity: 1, height: "auto" }}
                     className="mt-4 pt-4 border-t border-neutral-100"
                   >
                     <label className="block text-xs font-semibold text-neutral-700 mb-2">
-                      Message personnalisé (écrit sur papier vergé cacheté à la cire) :
+                      Message personnalisé (écrit sur papier vergé cacheté à la
+                      cire) :
                     </label>
                     <textarea
                       rows={3}
@@ -302,7 +348,10 @@ export default function CartPage() {
                 <div>
                   <form onSubmit={handleApplyCoupon} className="flex gap-2">
                     <div className="relative flex-1">
-                      <Tag className="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-400" size={14} />
+                      <Tag
+                        className="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-400"
+                        size={14}
+                      />
                       <input
                         type="text"
                         placeholder="Code promo (ex: MAETA10)"
@@ -318,11 +367,20 @@ export default function CartPage() {
                       Appliquer
                     </button>
                   </form>
-                  {couponError && <p className="text-xs text-rose-600 mt-1.5">{couponError}</p>}
+                  {couponError && (
+                    <p className="text-xs text-rose-600 mt-1.5">
+                      {couponError}
+                    </p>
+                  )}
                   {couponCode && (
                     <div className="mt-2 flex items-center justify-between p-2 rounded-lg bg-emerald-50 text-emerald-800 text-xs font-semibold">
-                      <span>Code {couponCode} (-{discountPercentage}%)</span>
-                      <button onClick={removeCoupon} className="text-emerald-700 hover:text-emerald-900">
+                      <span>
+                        Code {couponCode} (-{discountPercentage}%)
+                      </span>
+                      <button
+                        onClick={removeCoupon}
+                        className="text-emerald-700 hover:text-emerald-900"
+                      >
                         ✕
                       </button>
                     </div>
@@ -333,7 +391,9 @@ export default function CartPage() {
                 <div className="space-y-3 text-xs text-neutral-600 border-t border-neutral-100 pt-4">
                   <div className="flex justify-between">
                     <span>Sous-total articles</span>
-                    <span className="font-semibold text-neutral-900">€{(subtotalInCents / 100).toFixed(2)}</span>
+                    <span className="font-semibold text-neutral-900">
+                      €{(subtotalInCents / 100).toFixed(2)}
+                    </span>
                   </div>
 
                   {discountInCents > 0 && (
@@ -345,8 +405,16 @@ export default function CartPage() {
 
                   <div className="flex justify-between">
                     <span>Frais de port</span>
-                    <span className={shippingInCents === 0 ? 'text-emerald-700 font-bold' : 'font-semibold text-neutral-900'}>
-                      {shippingInCents === 0 ? 'Offerts' : `€${(shippingInCents / 100).toFixed(2)}`}
+                    <span
+                      className={
+                        shippingInCents === 0
+                          ? "text-emerald-700 font-bold"
+                          : "font-semibold text-neutral-900"
+                      }
+                    >
+                      {shippingInCents === 0
+                        ? "Offerts"
+                        : `€${(shippingInCents / 100).toFixed(2)}`}
                     </span>
                   </div>
 
@@ -359,8 +427,12 @@ export default function CartPage() {
                 {/* Total */}
                 <div className="pt-4 border-t border-neutral-200 flex items-baseline justify-between">
                   <div>
-                    <span className="text-xs text-neutral-500 font-medium">Total TTC</span>
-                    <p className="text-[10px] text-neutral-400">Paiement sécurisé SSL</p>
+                    <span className="text-xs text-neutral-500 font-medium">
+                      Total TTC
+                    </span>
+                    <p className="text-[10px] text-neutral-400">
+                      Paiement sécurisé SSL
+                    </p>
                   </div>
                   <span className="font-playfair text-3xl font-bold text-amber-950">
                     €{(totalInCents / 100).toFixed(2)}

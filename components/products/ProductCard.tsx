@@ -1,13 +1,14 @@
-'use client';
+"use client";
 
-import { FC, useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Heart, ShoppingBag } from 'lucide-react';
-import { cn } from '@/lib/utils/cn';
-import { formatPrice } from '@/lib/utils/formatPrice';
-import type { Product } from '@/types/product';
+import { motion, AnimatePresence } from "framer-motion";
+import { Heart, ShoppingBag } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { FC, useState } from "react";
+
+import { cn } from "@/lib/utils/cn";
+import { formatPrice } from "@/lib/utils/formatPrice";
+import type { Product } from "@/types/product";
 
 interface ProductCardProps {
   product: Product;
@@ -44,8 +45,8 @@ const ProductCard: FC<ProductCardProps> = ({
   return (
     <motion.article
       className={cn(
-        'group relative flex flex-col overflow-hidden rounded-lg bg-white shadow-sm transition-shadow duration-300 hover:shadow-lg',
-        className
+        "group relative flex flex-col overflow-hidden rounded-lg bg-white shadow-sm transition-shadow duration-300 hover:shadow-lg",
+        className,
       )}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -55,7 +56,10 @@ const ProductCard: FC<ProductCardProps> = ({
       aria-label={`${product.name} parfum product card`}
     >
       {/* Image Container */}
-      <Link href={productUrl} className="relative block overflow-hidden bg-neutral-50">
+      <Link
+        href={productUrl}
+        className="relative block overflow-hidden bg-neutral-50"
+      >
         <div className="relative aspect-square w-full">
           {!imageError ? (
             <Image
@@ -63,8 +67,8 @@ const ProductCard: FC<ProductCardProps> = ({
               alt={imageAlt}
               fill
               className={cn(
-                'object-cover transition-transform duration-500 group-hover:scale-105',
-                'group-focus-within:ring-2 group-focus-within:ring-offset-2 group-focus-within:ring-amber-600'
+                "object-cover transition-transform duration-500 group-hover:scale-105",
+                "group-focus-within:ring-2 group-focus-within:ring-offset-2 group-focus-within:ring-amber-600",
               )}
               priority={priority}
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -73,7 +77,9 @@ const ProductCard: FC<ProductCardProps> = ({
             />
           ) : (
             <div className="flex h-full items-center justify-center bg-neutral-100">
-              <span className="text-sm text-neutral-400">Image indisponible</span>
+              <span className="text-sm text-neutral-400">
+                Image indisponible
+              </span>
             </div>
           )}
         </div>
@@ -103,17 +109,19 @@ const ProductCard: FC<ProductCardProps> = ({
           <motion.button
             onClick={handleToggleFavorite}
             className={cn(
-              'rounded-full p-3 shadow-lg transition-colors duration-200',
+              "rounded-full p-3 shadow-lg transition-colors duration-200",
               isFavorite
-                ? 'bg-red-500 text-white'
-                : 'bg-white text-neutral-700 hover:bg-red-500 hover:text-white'
+                ? "bg-red-500 text-white"
+                : "bg-white text-neutral-700 hover:bg-red-500 hover:text-white",
             )}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
-            aria-label={isFavorite ? 'Retirer des favoris' : 'Ajouter aux favoris'}
+            aria-label={
+              isFavorite ? "Retirer des favoris" : "Ajouter aux favoris"
+            }
             aria-pressed={isFavorite}
           >
-            <Heart size={20} fill={isFavorite ? 'currentColor' : 'none'} />
+            <Heart size={20} fill={isFavorite ? "currentColor" : "none"} />
           </motion.button>
 
           <motion.button
@@ -122,7 +130,7 @@ const ProductCard: FC<ProductCardProps> = ({
             className="rounded-full bg-amber-600 p-3 text-white shadow-lg transition-colors duration-200 hover:bg-amber-700 disabled:bg-emerald-600"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
-            aria-label={isAdded ? 'Produit ajouté' : 'Ajouter au panier'}
+            aria-label={isAdded ? "Produit ajouté" : "Ajouter au panier"}
           >
             <ShoppingBag size={20} />
           </motion.button>
@@ -155,15 +163,19 @@ const ProductCard: FC<ProductCardProps> = ({
             <span className="text-lg font-semibold text-neutral-900">
               {formatPrice(product.price)}
             </span>
-            {product.original_price && product.original_price > product.price && (
-              <span className="text-sm line-through text-neutral-400">
-                {formatPrice(product.original_price)}
-              </span>
-            )}
+            {product.original_price &&
+              product.original_price > product.price && (
+                <span className="text-sm line-through text-neutral-400">
+                  {formatPrice(product.original_price)}
+                </span>
+              )}
           </div>
 
           {product.average_rating && (
-            <div className="flex items-center gap-1" aria-label={`Note: ${product.average_rating} sur 5`}>
+            <div
+              className="flex items-center gap-1"
+              aria-label={`Note: ${product.average_rating} sur 5`}
+            >
               <span className="text-xs font-medium text-neutral-700">
                 {product.average_rating.toFixed(1)}
               </span>
@@ -175,7 +187,10 @@ const ProductCard: FC<ProductCardProps> = ({
         {/* Stock Status */}
         {product.stock <= 0 && (
           <div className="mt-2 rounded-md bg-red-50 p-2 text-center">
-            <p className="text-xs font-semibold uppercase text-red-600" role="alert">
+            <p
+              className="text-xs font-semibold uppercase text-red-600"
+              role="alert"
+            >
               Rupture de stock
             </p>
           </div>

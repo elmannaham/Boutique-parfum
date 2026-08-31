@@ -61,7 +61,7 @@ export const PERFUME_PRODUCTS: PerfumeProduct[] = [
     },
     volume: 100,
     price: 245,
-    image: "/images/perfumes/midnight-rose.svg",
+    image: "/images/perfumes/midnight-rose.jpg",
     availability: "In Stock",
     rating: 4.9,
     reviews: 287,
